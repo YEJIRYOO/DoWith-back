@@ -1,0 +1,9 @@
+#spring.application.name=doWith
+#
+
+spring:
+  datasource: #mysql setting: local
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/doWith
+    username: root
+    password: dbdPwl0816*
