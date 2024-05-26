@@ -1,9 +1,16 @@
 #spring.application.name=doWith
-#
 
 spring:
+  application:
+    name: doWith
   datasource: #mysql setting: local
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/doWith
     username: root
     password: dbdPwl0816*
+  jpa:
+    hibernate:
+      ddl-auto: create #이후 빼주기!!!!!!!
+
+server:
+  port: 80
