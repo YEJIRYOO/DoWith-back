@@ -1,4 +1,3 @@
-#spring.application.name=doWith
 
 spring:
   application:
@@ -12,5 +11,11 @@ spring:
     hibernate:
       ddl-auto: create #이후 빼주기!!!!!!!
 
+#jwt setting
+jwt:
+  secretKey: x!A%D*G-KaPdSgVkYp3sTD8y/B?E(H+M
+  access:
+    expiration: 3600000 #1시간(s)
+    header: Authorization
 server:
   port: 80
