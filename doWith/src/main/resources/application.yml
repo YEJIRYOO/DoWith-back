@@ -14,8 +14,7 @@ spring:
 #jwt setting
 jwt:
   secretKey: x!A%D*G-KaPdSgVkYp3sTD8y/B?E(H+M
-  access:
-    expiration: 3600000 #1시간(s)
-    header: Authorization
+  expiration_time: 3600000 #1시간(s)
+
 server:
   port: 80
