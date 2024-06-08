@@ -3,6 +3,8 @@ package com.project.doWith.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+
 @Builder
 @Getter
 @Setter
@@ -23,5 +25,6 @@ public class Member_Group {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
     private Groups groups;
+
 
 }

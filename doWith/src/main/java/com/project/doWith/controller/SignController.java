@@ -3,7 +3,7 @@ package com.project.doWith.controller;
 import com.project.doWith.dto.SignRequest;
 import com.project.doWith.dto.SignResponse;
 import com.project.doWith.repository.MemberRepository;
-import com.project.doWith.service.SignService;
+import com.project.doWith.security.login.SignService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

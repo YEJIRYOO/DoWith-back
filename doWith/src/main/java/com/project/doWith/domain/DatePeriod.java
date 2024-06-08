@@ -28,4 +28,9 @@ public class DatePeriod {
     @Column(name = "NAME",nullable = false)
     private Integer achieve_rate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "GROUP_ID")
+    private Groups group;
+
+
 }

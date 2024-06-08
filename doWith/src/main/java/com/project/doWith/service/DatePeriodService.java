@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 @Transactional
-public class DateGoalService {
+public class DatePeriodService {
 
     @Autowired
     private GroupRepository groupRepository;

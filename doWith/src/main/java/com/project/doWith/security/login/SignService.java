@@ -1,4 +1,4 @@
-package com.project.doWith.service;
+package com.project.doWith.security.login;
 
 import com.project.doWith.domain.Member;
 import com.project.doWith.dto.SignRequest;

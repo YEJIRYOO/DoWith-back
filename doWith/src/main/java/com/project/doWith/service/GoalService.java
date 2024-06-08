@@ -1,2 +1,11 @@
-package com.project.doWith.service;public class GoalService {
+package com.project.doWith.service;
+
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+@Service
+@RequiredArgsConstructor
+@Transactional
+public class GoalService {
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -28,6 +29,9 @@ public class Groups {
 
     @Column(name = "GROUP_UUID",nullable = true)
     private String groupUuid;
+
+    @OneToMany(mappedBy = "group",cascade = CascadeType.ALL)
+    List<DatePeriod> datePeriods;
 
     @OneToMany(mappedBy = "groups", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Member_Group> userGroups = new HashSet<>();

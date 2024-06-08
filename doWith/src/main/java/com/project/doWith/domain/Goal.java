@@ -21,6 +21,7 @@ public class Goal {
 
     @Column(name = "RANGE")
     private Integer range;
+    //공통->0, 개인->1
 
     @Column(name = "CONFIRM_NAME")
     private String confirm_name;
@@ -34,5 +35,8 @@ public class Goal {
     @Column(name = "COMPLETE")
     private Boolean complete;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+    private Member member;
 
 }
