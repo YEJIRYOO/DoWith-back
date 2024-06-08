@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Entity
 @Getter
@@ -27,6 +28,9 @@ public class DatePeriod {
 
     @Column(name = "NAME",nullable = false)
     private Integer achieve_rate;
+
+    @OneToMany(mappedBy = "datePeriod", cascade = CascadeType.ALL)
+    private List<Goal> goal;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "GROUP_ID")

@@ -36,7 +36,7 @@ public class Goal {
     private Boolean complete;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
-    private Member member;
+    @JoinColumn(name = "date_id")
+    private DatePeriod datePeriod;
 
 }

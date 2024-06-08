@@ -38,8 +38,6 @@ public class Member {
     @Column(name = "PROFILE",nullable = true)
     private String profile;
 
-    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
-    private List<Goal> goal;
 
     //hashSet로 관리_고아 객체 delete
     @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
