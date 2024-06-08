@@ -10,6 +10,6 @@ public class GroupInfoResponse {
     private Long group_id;
     private String group_intro;
     private String group_info;
-    private UUID group_uuid;
+    private String group_uuid;
 
 }

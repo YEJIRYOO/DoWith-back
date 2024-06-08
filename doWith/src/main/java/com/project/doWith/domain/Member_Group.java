@@ -22,6 +22,6 @@ public class Member_Group {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "group_id")
-    private Group group;
+    private Groups groups;
 
 }

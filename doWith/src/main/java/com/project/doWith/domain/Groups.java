@@ -5,7 +5,6 @@ import lombok.*;
 
 import java.util.HashSet;
 import java.util.Set;
-import java.util.UUID;
 
 @Entity
 @Getter
@@ -14,7 +13,7 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "DW_GROUP")
-public class Group {
+public class Groups {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +26,9 @@ public class Group {
     @Column(name = "GROUP_INFO",nullable = true)
     private String group_info;
 
-    @Column(name = "GROUP_UUID")
-    private UUID group_uuid;
+    @Column(name = "GROUP_UUID",nullable = true)
+    private String groupUuid;
 
-    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "groups", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Member_Group> userGroups = new HashSet<>();
 }

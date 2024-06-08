@@ -1,6 +1,6 @@
 package com.project.doWith.service;
 
-import com.project.doWith.domain.Group;
+import com.project.doWith.domain.Groups;
 import com.project.doWith.domain.Member;
 import com.project.doWith.domain.Member_Group;
 import com.project.doWith.dto.GroupCreateRequest;
@@ -11,10 +11,8 @@ import com.project.doWith.repository.MemberRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -29,12 +27,12 @@ public class GroupService {
     private MemberGroupRepository memberGroupRepository;
     //정상 생성 시 return group_id
     public Long createGroup(Long member_id,GroupCreateRequest groupCreateRequest){
-        Group createdGroup=Group.builder()
+        Groups createdGroups = Groups.builder()
                 .group_info(groupCreateRequest.getGroup_info())
                 .group_intro(groupCreateRequest.getGroup_intro())
-                .group_uuid(UUID.randomUUID())
+                .groupUuid(UUID.randomUUID().toString())
                 .build();
-        Group savedGroup=groupRepository.save(createdGroup);
+        Groups savedGroups =groupRepository.save(createdGroups);
 
         Member member=memberRepository.findById(member_id)
                 .orElseThrow(()->new IllegalArgumentException("Invalid member ID"));
@@ -42,23 +40,23 @@ public class GroupService {
 
         Member_Group createdMemberGroup=Member_Group.builder()
                 .member(member)
-                .group(savedGroup)
+                .groups(savedGroups)
                 .build();
         Member_Group savedMemGroup=memberGroupRepository.save(createdMemberGroup);
 
-        return savedGroup.getGroup_id();
+        return savedGroups.getGroup_id();
         //생성된 group_id return
     }
 
     public GroupInfoResponse getGroupInfo(Long group_id){
-        Group group=groupRepository.findById(group_id)
+        Groups groups =groupRepository.findById(group_id)
                 .orElseThrow(()->new IllegalArgumentException("Invalid group ID"));
 
         GroupInfoResponse groupInfoResponse=new GroupInfoResponse();
-        groupInfoResponse.setGroup_id(group.getGroup_id());
-        groupInfoResponse.setGroup_info(group.getGroup_info());
-        groupInfoResponse.setGroup_intro(group.getGroup_intro());
-        groupInfoResponse.setGroup_uuid(group.getGroup_uuid());
+        groupInfoResponse.setGroup_id(groups.getGroup_id());
+        groupInfoResponse.setGroup_info(groups.getGroup_info());
+        groupInfoResponse.setGroup_intro(groups.getGroup_intro());
+        groupInfoResponse.setGroup_uuid(groups.getGroupUuid());
 
         return groupInfoResponse;
     }
