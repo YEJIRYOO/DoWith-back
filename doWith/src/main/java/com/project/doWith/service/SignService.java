@@ -76,6 +76,7 @@ public class SignService {
 
 
             Member member = Member.builder()
+                    .profile(request.getProfile())
                     .account(request.getAccount())
                     .password(passwordEncoder.encode(request.getPassword()))
                     .name(request.getName())

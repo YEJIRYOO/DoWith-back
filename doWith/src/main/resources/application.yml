@@ -9,7 +9,7 @@ spring:
     password: dbdPwl0816*
   jpa:
     hibernate:
-      ddl-auto: create #이후 빼주기!!!!!!!
+      ddl-auto: update #이후 빼주기!!!!!!!
 
 #jwt setting
 jwt:

@@ -5,11 +5,13 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -35,6 +37,10 @@ public class Member {
 
     @Column(name = "PROFILE",nullable = true)
     private String profile;
+
+    //hashSet로 관리_고아 객체 delete
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Member_Group> userGroups = new HashSet<>();
 
     //fetch_속성 데이터 어떻게 로드 할 지_즉시 로드
     //Lazy: 실제로 데이터에 접근할 때까지 로드하지 않음

@@ -47,7 +47,8 @@ public class SecurityConfig {
                 )
                 .authorizeHttpRequests(requests -> requests
                         // 회원가입과 로그인은 모두 승인
-                        .requestMatchers("/login", "/register", "/main/**").permitAll()
+                        .requestMatchers("/login", "/register", "/main/**","/group/**").permitAll()
+                        //Role 이용해서 group 접근하는법 없을까?
                         //admin으로 시작하는 요청은 ADMIN 권한이 있는 유저에게만 허용
                         .requestMatchers("/admin").hasRole("ADMIN")
                         //user 로 시작하는 요청은 USER 권한이 있는 유저에게만 허용

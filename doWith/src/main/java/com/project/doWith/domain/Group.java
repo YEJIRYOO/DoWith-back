@@ -3,15 +3,17 @@ package com.project.doWith.domain;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
-@Setter
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "GROUP")
+@Table(name = "DW_GROUP")
 public class Group {
 
     @Id
@@ -27,4 +29,7 @@ public class Group {
 
     @Column(name = "GROUP_UUID")
     private UUID group_uuid;
+
+    @OneToMany(mappedBy = "group", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Member_Group> userGroups = new HashSet<>();
 }

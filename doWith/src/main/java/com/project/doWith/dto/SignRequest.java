@@ -9,16 +9,10 @@ import lombok.Data;
 @Data
 public class SignRequest {
 
-    private Long id;
-
     private String account;
-
     private String password;
-
     private String name;
-
     private String email;
-
     private String profile;
 
 }
