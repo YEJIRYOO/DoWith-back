@@ -19,8 +19,8 @@ public class Goal {
     @Column(name = "GOAL_ID")
     private Long goal_id;
 
-    @Column(name = "RANGE")
-    private Integer range;
+    @Column(name = "RANGE_VAL")
+    private Integer range_val;
     //공통->0, 개인->1
 
     @Column(name = "CONFIRM_NAME")
