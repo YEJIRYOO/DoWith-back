@@ -23,8 +23,8 @@ public class ShareService {
     @Autowired
     private final MemberGroupRepository memberGroupRepository;
 
-    public ShareInfoResponse joinGroupByUUID(Long member_id, String group_uuid) {
-        Groups targetGroups = groupRepository.findByGroupUuid(group_uuid)
+    public ShareInfoResponse joinGroupByUUID(Long member_id, String groupUuid) {
+        Groups targetGroups = groupRepository.findByGroupUuid(groupUuid)
                 .orElseThrow(() -> new IllegalArgumentException("Invalid UUID"));
 
         Member joinMember = memberRepository.findById(member_id)

@@ -38,11 +38,10 @@ public class GroupController {
         return ResponseEntity.ok(groupInfoResponse);
     }
 
-
     @PostMapping("/share/enter/{member_id}")
     public ResponseEntity<ShareInfoResponse> shareInfo(
-            @PathVariable("member_id") Long member_id, @RequestBody Map<String, String> requestBody) {
-        String groupUuid = requestBody.get("groupUuid");
+            @PathVariable("member_id") Long member_id, @RequestBody ShareRequest shareRequest) {
+        String groupUuid = shareRequest.getGroup_uuid();
         ShareInfoResponse shareInfoResponse = shareService.joinGroupByUUID(member_id, groupUuid);
         return ResponseEntity.ok(shareInfoResponse);
     }
