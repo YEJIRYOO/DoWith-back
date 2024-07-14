@@ -19,7 +19,6 @@ public class Authority {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonIgnore //JSON 형식 직렬화 할 때 무시
     private Long id;
-
     private String name;
 
     @JoinColumn(name = "member")
