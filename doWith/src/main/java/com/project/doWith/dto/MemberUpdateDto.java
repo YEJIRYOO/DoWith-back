@@ -1,2 +1,13 @@
-package com.project.doWith.dto;public class MemberUpdateDto {
+package com.project.doWith.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+public class MemberUpdateDto {
 }
