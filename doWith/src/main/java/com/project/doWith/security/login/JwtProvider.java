@@ -8,6 +8,7 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -19,6 +20,7 @@ import java.security.Key;
 import java.util.Date;
 import java.util.List;
 
+@Slf4j
 @RequiredArgsConstructor
 @Component
 public class JwtProvider {
@@ -43,6 +45,8 @@ public class JwtProvider {
         Claims claims = Jwts.claims().setSubject(account);
         claims.put("roles", roles);
         Date now = new Date();
+        //로그 출력
+        log.trace("JwtProvider- createToken trace log");
         return Jwts.builder()
                 .setClaims(claims)
                 .setIssuedAt(now)
@@ -61,10 +65,12 @@ public class JwtProvider {
     // 토큰에 담겨있는 유저 account 획득
     public String getAccount(String token) {
         return Jwts.parserBuilder().setSigningKey(secretKey).build().parseClaimsJws(token).getBody().getSubject();
+
     }
 
     // Authorization Header를 통해 인증을 한다.
     public String resolveToken(HttpServletRequest request) {
+        log.trace("JwtProvider- resolve token trace log");
         return request.getHeader("Authorization");
     }
 

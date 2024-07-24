@@ -53,7 +53,7 @@ public class SecurityConfig {
 //                        .requestMatchers("/admin").hasRole("ADMIN")
                         //user 로 시작하는 요청은 USER 권한이 있는 유저에게만 허용
 //                        .requestMatchers("/**").hasRole("USER")//ROLE_ 자동 주입
-                        .requestMatchers("/**").hasAuthority("ROLE_USER")
+                        .requestMatchers("/**").hasAuthority("USER")
 
 //                        .requestMatchers("/**").permitAll()
                         .anyRequest().denyAll()
