@@ -5,6 +5,7 @@ import com.project.doWith.domain.Member;
 import com.project.doWith.domain.Member_Group;
 import com.project.doWith.dto.GroupCreateRequest;
 import com.project.doWith.dto.GroupInfoResponse;
+import com.project.doWith.exception.DataNotFoundException;
 import com.project.doWith.repository.GroupRepository;
 import com.project.doWith.repository.MemberGroupRepository;
 import com.project.doWith.repository.MemberRepository;
@@ -14,6 +15,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.swing.*;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -62,26 +65,36 @@ public class GroupService {
         return groupInfoResponse;
     }
 
-    /*
-        MemberRepository memberRepository;
-    public Optional<Member> putMemberInfo(Long member_id,SignResponse updateMemberRequest){
-        SignResponse signResponse=new SignResponse();
-        Optional<Member> optionalMember=memberRepository.findById(member_id);
-        if(optionalMember.isPresent()){
-            Member member=optionalMember.get();
-            member.setEmail(updateMemberRequest.getEmail());
-            member.setProfile(updateMemberRequest.getProfile());
-            memberRepository.save(member);
+    public GroupInfoResponse putGroupInfo(Long group_id,GroupInfoResponse groupInfoResponse){
+        GroupInfoResponse updateGroupInfo=new GroupInfoResponse();
+        Optional<Groups> optionalGroups=groupRepository.findById(group_id);
+        if(optionalGroups.isPresent()){
+            Groups groups=optionalGroups.get();
+            groups.setGroup_intro(groupInfoResponse.getGroup_intro());
+            groups.setGroup_info(groups.getGroup_info());
+            groupRepository.save(groups);
+
+            return groupInfoResponse;
         }
-        else throw new DataNotFoundException("Member doesn't exist");
+        else throw new DataNotFoundException("Group does not exist");
 
-        return optionalMember;
-        //member는 Membertype이므로 타입 충돌로 반환 불가
     }
-     */
 
+    public String getGroupUuid(Long group_id){
+        Optional<Groups> groups=groupRepository.findById(group_id);
+        if(groups.isPresent()){
+            return groups.get().getGroupUuid();
+        }
+        else throw new DataNotFoundException("Group does not exist");
+    }
 
-
-
-
+    public boolean reissuanceUuid(Long group_id){
+        Optional<Groups> groups=groupRepository.findById(group_id);
+        if(groups.isPresent()){
+            Groups groups1=groups.get();
+            groups1.setGroupUuid(UUID.randomUUID().toString());
+            return true;
+        }
+        else return false;
+    }
 }

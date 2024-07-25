@@ -26,10 +26,10 @@ public class MemberGroupService {
             member.setEmail(updateMemberRequest.getEmail());
             member.setProfile(updateMemberRequest.getProfile());
             memberRepository.save(member);
-        }
-        else throw new DataNotFoundException("Member doesn't exist");
 
-        return optionalMember;
-        //member는 Membertype이므로 타입 충돌로 반환 불가
+            return optionalMember;
+            //member는 Membertype이므로 타입 충돌로 반환 불가
+        }
+        else throw new DataNotFoundException("Member does not exist");
     }
 }

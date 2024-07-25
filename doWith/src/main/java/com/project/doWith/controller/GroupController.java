@@ -45,4 +45,23 @@ public class GroupController {
         ShareInfoResponse shareInfoResponse = shareService.joinGroupByUUID(member_id, groupUuid);
         return ResponseEntity.ok(shareInfoResponse);
     }
+
+    @PutMapping("/put/{group_id}")
+    public ResponseEntity<GroupInfoResponse> putGroupInfo(
+            @PathVariable("group_id") Long group_id,@RequestBody GroupInfoResponse groupInfoResponse){
+        GroupInfoResponse groupInfoResponse1=groupService.putGroupInfo(group_id,groupInfoResponse);
+        return ResponseEntity.ok(groupInfoResponse1);
+    }
+
+    @GetMapping("/share/{group_id}")
+    public ResponseEntity<String> getGroupUuid(@PathVariable("group_id") Long group_id){
+        String groupUuid= groupService.getGroupUuid(group_id);
+        return ResponseEntity.ok(groupUuid);
+    }
+
+    @PutMapping("/share/put/{group_id}")
+    public ResponseEntity<Boolean> reissuanceUuid(@PathVariable("group_id")Long group_id){
+        boolean updateGroupUuid=groupService.reissuanceUuid(group_id);
+        return ResponseEntity.ok((updateGroupUuid));
+    }
 }
