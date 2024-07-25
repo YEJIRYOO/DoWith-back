@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Setter
 @Getter
 @Builder
 @AllArgsConstructor
@@ -32,6 +33,9 @@ public class Groups {
     @OneToMany(mappedBy = "group",cascade = CascadeType.ALL)
     List<DatePeriod> datePeriods;
 
+    @Builder. Default
     @OneToMany(mappedBy = "groups", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Member_Group> userGroups = new HashSet<>();
+    //upserGroups는 HashSet<>()을 기본 값으로 가짐
+    //-> builder default 설정 필요
 }
