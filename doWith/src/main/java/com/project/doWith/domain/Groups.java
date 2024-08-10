@@ -21,6 +21,9 @@ public class Groups {
     @Column(name = "GROUP_ID")
     private Long group_id;
 
+    @Column(name = "GROUP_TITLE",nullable = true)
+    private String group_title; //그룹명 추가
+
     @Column(name = "GROUP_INTRO",nullable = true)
     private String group_intro;
 
